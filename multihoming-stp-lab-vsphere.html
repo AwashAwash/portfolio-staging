@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Multihoming STP Lab Using SCTP on vSphere | Awash Maskey</title>
+  <meta name="description" content="Hands-on lab demonstrating SCTP multihoming with STP using dual networks on VMware vSphere, including heartbeat monitoring, failover testing, and routing configuration.">
+  <meta name="keywords" content="SCTP Multihoming, SIGTRAN, STP Lab, VMware vSphere, Linux Networking, Telecom Systems">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+
+<header id="header" class="header">
+  <div class="container d-flex align-items-center justify-content-between">
+    <h1 class="logo"><a href="index.html">Awash Maskey</a></h1>
+    <a href="blog.html" class="btn btn-outline-primary btn-sm">← Back to Blog</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section id="portfolio-details" class="portfolio-details section">
+  <div class="container" data-aos="fade-up">
+
+    <!-- Image & Meta -->
+    <div class="row gy-4 align-items-center">
+
+      <div class="col-lg-8">
+        <div class="col-lg-8">
+  <img src="assets/img/portfolio/multihoming/active link.png" class="img-fluid rounded shadow mb-3" alt="Teamwork in Data Center Operations">
+  <img src="assets/img/portfolio/multihoming/arp.png" class="img-fluid rounded shadow mb-3" alt="Teamwork in Data Center Operations">
+  <img src="assets/img/portfolio/multihoming/beats.png" class="img-fluid rounded shadow mb-3" alt="Teamwork in Data Center Operations">
+  <img src="assets/img/portfolio/multihoming/increain.png" class="img-fluid rounded shadow" alt="Teamwork in Data Center Operations">
+  <img src="assets/img/portfolio/multihoming/older heartbeat.png" class="img-fluid rounded shadow" alt="Teamwork in Data Center Operations">
+   <img src="assets/img/portfolio/multihoming/ss.png" class="img-fluid rounded shadow" alt="Teamwork in Data Center Operations">
+    <img src="assets/img/portfolio/multihoming/sctp.png" class="img-fluid rounded shadow" alt="Teamwork in Data Center Operations">
+     <img src="assets/img/portfolio/multihoming/route.png" class="img-fluid rounded shadow" alt="Teamwork in Data Center Operations">
+       <img src="assets/img/portfolio/multihoming/ifpl.png" class="img-fluid rounded shadow" alt="Teamwork in Data Center Operations">
+</div>
+</div>
+
+             class="img-fluid rounded shadow"
+             alt="SCTP Multihoming STP Lab on VMware vSphere">
+      </div>
+
+      <div class="col-lg-4">
+        <div class="portfolio-info shadow-sm">
+          <h3>Lab Overview</h3>
+          <ul>
+            <li><strong>Topic:</strong> SCTP Multihoming</li>
+            <li><strong>Platform:</strong> VMware vSphere 3.145</li>
+            <li><strong>Protocol:</strong> SIGTRAN (SCTP)</li>
+            <li><strong>Use Case:</strong> STP Redundancy</li>
+            <li><strong>Author:</strong> Awash Maskey</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Article Content -->
+    <div class="row mt-5">
+      <div class="col-lg-12 portfolio-description">
+
+        <h2>Building a Multihomed STP Lab Using SCTP on VMware vSphere</h2>
+
+        <p>
+          This article documents a hands-on lab built to demonstrate
+          <strong>SCTP multihoming for STP redundancy</strong> using two isolated
+          networks on VMware vSphere. The objective was to validate heartbeat
+          monitoring, path failover, and service continuity without interface
+          bonding or cross-IP routing.
+        </p>
+
+        <h4>Lab Architecture Overview</h4>
+        <p>
+          Two STP nodes (Local and Remote) were deployed with dual network
+          interfaces, each connected to separate Layer-3 networks. Each interface
+          was configured as a primary or secondary SCTP path.
+        </p>
+
+        <h4>Network Configuration</h4>
+
+        <h5>Local STP Node</h5>
+        <ul>
+          <li><strong>NIC 1 (Primary):</strong> Network 3 – 192.168.3.240 /24, GW 192.168.3.254</li>
+          <li><strong>NIC 2 (Secondary):</strong> Network 4 – 192.168.4.240 /24, GW 192.168.4.254</li>
+        </ul>
+
+        <h5>Remote STP Node</h5>
+        <ul>
+          <li><strong>NIC 1 (Primary):</strong> Network 3 – 192.168.3.241 /24, GW 192.168.3.254</li>
+          <li><strong>NIC 2 (Secondary):</strong> Network 4 – 192.168.4.241 /24, GW 192.168.4.254</li>
+        </ul>
+
+        <h4>Kernel and SCTP Configuration</h4>
+        <ul>
+          <li>Custom Linux kernel built with <strong>SCTP debug enabled</strong></li>
+          <li>Successful ICMP reachability across:
+            <ul>
+              <li>Network 3 ↔ Network 3</li>
+              <li>Network 4 ↔ Network 4</li>
+              <li>Network 3 ↔ Network 4 (without cross-IP routing)</li>
+            </ul>
+          </li>
+          <li>SCTP heartbeat interval set to <strong>15000 ms</strong></li>
+          <li><code>rp_filter=2</code> configured for strict reverse path forwarding</li>
+        </ul>
+
+        <h4>Routing Design</h4>
+        <ul>
+          <li>No interface bonding used</li>
+          <li>Separate routing tables created for each network path</li>
+          <li>Metrics applied to control preferred paths</li>
+          <li>IP rules added to map traffic to the correct routing tables</li>
+        </ul>
+
+        <h4>Traffic Injection and Validation</h4>
+        <ul>
+          <li>SIGTRAN traffic successfully injected between STP nodes</li>
+          <li>PCAP captures confirmed SCTP heartbeat exchange across both interfaces</li>
+          <li>Heartbeat observed switching between primary and secondary paths</li>
+        </ul>
+
+        <h4>Failover Testing</h4>
+        <p>
+          To validate resilience, the SVI was restarted and the vNICs were
+          temporarily disabled at the hypervisor level. During this event:
+        </p>
+        <ul>
+          <li>All SCTP associations transitioned out of service</li>
+          <li>After re-enabling vNICs, SCTP associations recovered automatically</li>
+          <li>Heartbeat and ICMP traffic resumed on both primary and secondary paths</li>
+        </ul>
+
+        <h4>Conclusion</h4>
+        <p>
+          This lab successfully demonstrated SCTP multihoming behavior in a
+          virtualized STP environment. By using multiple interfaces, routing
+          policies, and SCTP heartbeat monitoring, high availability was achieved
+          without interface bonding. This setup closely reflects real-world
+          telecom-grade redundancy and failover requirements.
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer id="footer" class="footer">
+  <div class="container text-center">
+    <p>© <strong>Awash Maskey</strong>. All Rights Reserved</p>
+  </div>
+</footer>
+
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Ignore all videos
+assets/video/
+
+# Or more granular (if you want folder but not files)
+*.mp4
+*.mov
+*.webm
+
+# Optional: large images if needed
+# assets/img/portfolio/
+
+# Vendor (only ignore if you reinstall via npm/yarn)
+# assets/vendor/
+
+# System / build artifacts
+*.log
+dist/
+build/
+
+# Ignore certificates
+assets/certificates/
+
+# Or more general
+*.pdf

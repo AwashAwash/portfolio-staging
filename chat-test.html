@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chat Test</title>
+</head>
+<body>
+<h1>Testing Chat Button</h1>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Create chat button
+  const btn = document.createElement("button");
+  btn.innerText = "Chat";
+  Object.assign(btn.style, {
+    position: "fixed",
+    bottom: "20px",
+    right: "20px",
+    padding: "10px 20px",
+    backgroundColor: "#007bff",
+    color: "#fff",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    zIndex: "9999"
+  });
+  document.body.appendChild(btn);
+
+  // Create chat panel
+  const panel = document.createElement("div");
+  Object.assign(panel.style, {
+    position: "fixed",
+    bottom: "70px",
+    right: "20px",
+    width: "300px",
+    height: "400px",
+    backgroundColor: "#f0f0f0",
+    border: "1px solid #ccc",
+    display: "none",
+    flexDirection: "column",
+    zIndex: "9999",
+    overflow: "hidden"
+  });
+  panel.innerHTML = `
+    <div id="messages" style="padding:10px; flex:1; overflow-y:auto;"></div>
+    <div style="display:flex; border-top:1px solid #ccc;">
+      <input id="userInput" type="text" style="flex:1; padding:5px;">
+      <button id="sendBtn">Send</button>
+    </div>
+  `;
+  document.body.appendChild(panel);
+
+  // Toggle panel
+  btn.addEventListener("click", () => {
+    panel.style.display = panel.style.display === "flex" ? "none" : "flex";
+  });
+
+  // Send message function (mock server)
+  document.getElementById("sendBtn").addEventListener("click", () => {
+    const input = document.getElementById("userInput");
+    if (!input.value) return;
+    const messages = document.getElementById("messages");
+    messages.innerHTML += `<p><strong>You:</strong> ${input.value}</p>`;
+    messages.innerHTML += `<p><strong>Bot:</strong> Hello! This is a test reply.</p>`;
+    input.value = '';
+    messages.scrollTop = messages.scrollHeight;
+  });
+});
+</script>
+</body>
+</html>

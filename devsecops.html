@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>DevSecOps CI/CD Journey | Awash Maskey</title>
+  <meta name="description" content="Documenting my DevSecOps and CI/CD journey: Jenkins, Docker, Trivy, SonarQube, and real-world problem-solving.">
+  <meta name="keywords" content="DevOps, DevSecOps, CI/CD, Jenkins, Docker, Trivy, SonarQube, Portfolio, Infrastructure, IT">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header -->
+  <header id="header" class="header">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a href="index.html">Awash Maskey</a></h1>
+      <a href="index.html#portfolio" class="btn btn-outline-primary btn-sm">← Back to Portfolio</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <header class="my-5">
+        <h1>🚀 DevSecOps CI/CD Journey: Jenkins, Docker, Trivy & SonarQube</h1>
+        <p>Documenting my hands-on experience building secure and automated CI/CD pipelines with real-world problem-solving.</p>
+      </header>
+
+      <section>
+        <h2>🛠️ What I Built</h2>
+        <ul>
+          <li>Custom Jenkins pipeline running in Docker</li>
+          <li>Automated Docker builds of my personal portfolio site</li>
+          <li>Integrated security scanning with Trivy (vulnerabilities)</li>
+          <li>Integrated code quality analysis with SonarQube</li>
+          <li>Pushes images safely to Docker Hub</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>📌 Key Challenges & How I Solved Them</h2>
+        <ol>
+          <li>
+            <strong>Jenkins container couldn’t access the internet</strong>
+            <p>Solution: Adjusted Docker daemon network configuration and verified connectivity using <code>nslookup google.com</code> inside the container.</p>
+          </li>
+          <li>
+            <strong>Jenkins couldn’t run Docker commands inside the container</strong>
+            <p>Solution: Mounted <code>/var/run/docker.sock</code> and added the Jenkins user to the Docker group. Commands like <code>docker ps</code> worked inside Jenkins.</p>
+          </li>
+          <li>
+            <strong>CI pipeline failed at Docker login/push</strong>
+            <p>Solution: Configured Jenkins credentials using <code>withCredentials</code> block for secure login and push to Docker Hub.</p>
+          </li>
+          <li>
+            <strong>Integrating Security & Code Quality Scans</strong>
+            <p>
+              Trivy stage for Docker image scanning:<br>
+              <code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image --exit-code 1 --severity CRITICAL $IMAGE_NAME</code><br>
+              SonarQube stage for static code analysis:<br>
+              <code>sonar-scanner -Dsonar.projectKey=iportfolio-sites -Dsonar.sources=. -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_AUTH_TOKEN</code>
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>📖 Key Learnings</h2>
+        <ul>
+          <li>Understanding Docker-in-Docker issues</li>
+          <li>Managing user permissions and group IDs for secure CI pipelines</li>
+          <li>Writing robust Jenkins pipelines with multi-stage CI/CD</li>
+          <li>Integrating DevSecOps best practices into personal projects</li>
+          <li>Handling real-world problems in containerized environments</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>💡 Useful Commands I Learned</h2>
+        <pre>
+docker exec -it jenkins bash           # Enter Jenkins container
+docker build -t my-image:latest .      # Build Docker image
+docker run --rm busybox nslookup google.com  # Test network inside container
+docker volume rm jenkins_home          # Remove old Jenkins data
+        </pre>
+      </section>
+
+      <section>
+        <h2>🎯 Outcome</h2>
+        <ul>
+          <li>Fully functional CI/CD pipeline with Docker, Trivy, SonarQube, Jenkins</li>
+          <li>Securely building and pushing portfolio image to Docker Hub</li>
+          <li>Reproducible setup ready to scale for other projects</li>
+        </ul>
+      </section>
+
+   
+
+      <section>
+        <h2>🔗 My GitHub & Docker Hub</h2>
+        <ul>
+          <li>Repo: <a href="https://github.com/awashawash/iportfolio-sites" target="_blank">iportfolio-sites</a></li>
+          <li>Docker Hub Image: <a href="https://hub.docker.com/r/awashawash/awash-portfolio" target="_blank">awashawash/awash-portfolio:latest</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>💬 Final Note</h2>
+        <p>This journey reinforced the importance of practical problem-solving in DevOps. From debugging Docker networking to securing Jenkins pipelines, hands-on experience was invaluable.</p>
+        <p>#DevOps #DevSecOps #Jenkins #Docker #CI_CD #Trivy #SonarQube #DockerHub #LearningJourney</p>
+      </section>
+
+      <footer class="my-5">
+        © Awash Maskey | DevSecOps & CI/CD Enthusiast
+      </footer>
+    </div>
+  </main>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Systemd Timer Value Troubleshooting in Red Hat Linux 7 | Awash Maskey</title>
+  <meta name="description" content="Detailed troubleshooting case study of systemd timer values, Apache HTTPD, MariaDB, network, and GUI issues in Red Hat Enterprise Linux 7 environments.">
+  <meta name="keywords" content="RHEL 7, systemd timer, Apache HTTPD, MariaDB, Linux troubleshooting, Red Hat Linux">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+
+<header id="header" class="header">
+  <div class="container d-flex align-items-center justify-content-between">
+    <h1 class="logo"><a href="index.html">Awash Maskey</a></h1>
+    <a href="blog.html" class="btn btn-outline-primary btn-sm">← Back to Blog</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section id="portfolio-details" class="portfolio-details section">
+  <div class="container" data-aos="fade-up">
+
+    <!-- Header Image & Meta -->
+    <div class="row gy-4 align-items-center">
+
+      <div class="col-lg-8">
+         <img src="assets/img/portfolio/timervalue/default 1.png" class="img-fluid rounded shadow" alt="Teamwork in Data Center Operations">
+          <img src="assets/img/portfolio/timervalue/grubss.png" class="img-fluid rounded shadow" alt="Teamwork in Data Center Operations">
+           <img src="assets/img/portfolio/timervalue/hideen.png" class="img-fluid rounded shadow" alt="Teamwork in Data Center Operations">
+            <img src="assets/img/portfolio/timervalue/timeout 5.png" class="img-fluid rounded shadow" alt="Teamwork in Data Center Operations">
+             class="img-fluid rounded shadow"
+             alt="Systemd and Linux Troubleshooting">
+      </div>
+
+      <div class="col-lg-4">
+        <div class="portfolio-info shadow-sm">
+          <h3>Article Overview</h3>
+          <ul>
+            <li><strong>Topic:</strong> Systemd Timer Troubleshooting</li>
+            <li><strong>OS:</strong> Red Hat Enterprise Linux 7</li>
+            <li><strong>Services:</strong> HTTPD, MariaDB, SSH</li>
+            <li><strong>Focus:</strong> Stability & Performance</li>
+            <li><strong>Author:</strong> Awash Maskey</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Article Content -->
+    <div class="row mt-5">
+      <div class="col-lg-12 portfolio-description">
+
+        <h2>Systemd Timer Value Troubleshooting in Red Hat Linux 7</h2>
+
+        <p>
+          This article documents a real-world troubleshooting scenario involving
+          <strong>systemd timer delays, Apache HTTP Server failures, database errors,
+          network misconfigurations, and GUI loading issues</strong> in a Red Hat
+          Enterprise Linux 7 environment. The objective was to identify root causes,
+          stabilize services, and recommend long-term corrective actions.
+        </p>
+
+        <h4>Summary of Issues Identified</h4>
+
+        <h5>1. Apache HTTP Server Errors</h5>
+        <ul>
+          <li>Unclean shutdowns and failed HTTPD service starts</li>
+          <li>AJP backend connection failures on <code>127.0.0.1:8009</code></li>
+          <li>Timeout errors such as <code>ajp_ilink_receive() can't receive header</code></li>
+        </ul>
+
+        <h5>2. MySQL / MariaDB Errors</h5>
+        <ul>
+          <li>InnoDB log file size mismatches with <code>.cnf</code> configuration</li>
+          <li>Failure to register InnoDB as a storage engine</li>
+          <li>Slave I/O thread reconnect failures</li>
+          <li>Lost MySQL connections during queries</li>
+        </ul>
+
+        <h5>3. SSH and Key Verification Issues</h5>
+        <ul>
+          <li>Repeated <code>Host key verification failed</code> errors</li>
+          <li>Missing SSL key and certificate files (<code>https.key</code>, <code>https.crt</code>)</li>
+        </ul>
+
+        <h5>4. GUI Loading Delays</h5>
+        <ul>
+          <li>GUI not loading on first attempt across multiple VMs</li>
+          <li>Large volume of PCAP files under <code>/home/squire/pcap/</code></li>
+        </ul>
+
+        <h5>5. Network Configuration Issues</h5>
+        <ul>
+          <li>Missing prefixes and incorrect netmask values</li>
+          <li>Incomplete network scripts affecting routing and bonding</li>
+        </ul>
+
+        <h5>6. Red Hat Subscription & Package Issues</h5>
+        <ul>
+          <li>Expired Red Hat subscriptions</li>
+          <li>SSL certificate and configuration file inconsistencies</li>
+        </ul>
+
+        <h4>Actions Taken</h4>
+
+        <ul>
+          <li>Increased <code>TimeoutStartSec=300</code> in the HTTPD systemd service file</li>
+          <li>Reloaded systemd daemon and restarted HTTPD successfully</li>
+          <li>Cleared HTTPD cache and validated configuration</li>
+          <li>Reviewed and aligned InnoDB log file size configurations</li>
+          <li>Updated dashboard XML settings and validated in lab environment</li>
+          <li>Corrected network scripts by adding missing prefixes and routing details</li>
+          <li>Identified missing SSL key and certificate files for remediation</li>
+        </ul>
+
+        <h4>Recommendations and Next Steps</h4>
+
+        <ul>
+          <li>Renew expired Red Hat subscriptions for security updates and support</li>
+          <li>Validate all network bonding and routing configurations</li>
+          <li>Ensure InnoDB log file sizes match database configuration files</li>
+          <li>Monitor GUI performance after PCAP cleanup</li>
+          <li>Install and validate all required SSL certificates</li>
+        </ul>
+
+        <h4>Conclusion</h4>
+        <p>
+          This troubleshooting exercise highlights the importance of systematic
+          analysis across services, configurations, and infrastructure layers.
+          Proper systemd tuning, configuration validation, and proactive monitoring
+          are critical to maintaining stability in enterprise Red Hat Linux environments.
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer id="footer" class="footer">
+  <div class="container text-center">
+    <p>© <strong>Awash Maskey</strong>. All Rights Reserved</p>
+  </div>
+</footer>
+
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
