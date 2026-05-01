@@ -100,7 +100,7 @@ Cloudflare protections
 A production-grade, self-managed **DevSecOps platform** built from scratch on a VPS, designed to simulate real-world enterprise infrastructure, CI/CD workflows, security integration, and observability.
 
 
-##  Overview
+  Overview
 
 This project demonstrates a complete **end-to-end DevSecOps lifecycle**, evolving from a basic portfolio website into a **multi-environment, containerized, secure, and observable system**.
 
@@ -114,7 +114,7 @@ It reflects modern industry practices across:
 
 ---
 
-## 🏗️ Architecture
+ Architecture
 
 High-level system flow:
 
@@ -132,13 +132,13 @@ Docker Containers
  └── Grafana (Monitoring)
 ```
 
-###  Monitoring Flow
+ Monitoring Flow
 
 ```
 Node Exporter → Prometheus → Grafana
 ```
 
-###  Security Flow
+  Security Flow
 
 ```
 Code → Jenkins → Docker Build → Trivy Scan → Deploy
@@ -151,31 +151,31 @@ Code → Jenkins → Docker Build → Trivy Scan → Deploy
 
 ---
 
-##  Tech Stack
+  Tech Stack
 
-###  Infrastructure
+ Infrastructure
 
 * Rocky Linux (RHEL-based)
 * VPS (cloud-hosted)
 * Nginx (reverse proxy + SSL termination)
 * Cloudflare (DNS, HTTPS, edge security)
 
-###  Containerization
+  Containerization
 
 * Docker (multi-container setup)
 
-### 🔁 CI/CD
+ CI/CD
 
 * Jenkins (pipeline automation)
 * GitHub (source of truth)
 
-###  Security (DevSecOps)
+  Security (DevSecOps)
 
 * Trivy (container vulnerability scanning)
 * SonarQube (on-demand code analysis)
 * OWASP ZAP *(planned for DAST)*
 
-###  Monitoring & Observability
+  Monitoring & Observability
 
 * Node Exporter
 * Prometheus
@@ -196,7 +196,7 @@ Code → Jenkins → Docker Build → Trivy Scan → Deploy
 
 ---
 
-##  CI/CD Pipeline
+  CI/CD Pipeline
 
 Pipeline flow:
 
@@ -235,18 +235,18 @@ pipeline {
 
 ---
 
-##  Environments
+  Environments
 
 | Environment | Port | Purpose         |
 | ----------- | ---- | --------------- |
-| Production  | 8080 | Live deployment |
-| Staging     | 8082 | Testing changes |
-| Jenkins     | 8081 | CI/CD           |
-| Grafana     | 3000 | Monitoring      |
+| Production  | **** | Live deployment |
+| Staging     | **** | Testing changes |
+| Jenkins     | *** | CI/CD           |
+| Grafana     | **** | Monitoring      |
 
 ---
 
-##  Security Implementation
+  Security Implementation
 
  Container vulnerability scanning via **Trivy**
  HTTPS enforced via **Cloudflare + Origin Certificates**
@@ -275,7 +275,7 @@ Grafana → dashboards & visualization
 
 ---
 
-##  Key DevSecOps Practices Applied
+ Key DevSecOps Practices Applied
 
  Separation of environments (prod vs staging)
  Infrastructure as reproducible setup
@@ -285,8 +285,7 @@ Grafana → dashboards & visualization
  Reverse proxy routing with domain segmentation
 
 ---
-
-##  Challenges & Lessons Learned
+  Challenges & Lessons Learned
 
 Key real-world issues solved:
 
@@ -297,13 +296,13 @@ Key real-world issues solved:
  Nginx misrouting across subdomains
  Large file handling in Git
 
-###  Example Insight
+  Example Insight
 
 > Git is not optimized for large binary files. Videos and PDFs should be excluded using `.gitignore` or moved to external storage (e.g., S3/CDN).
 
 ---
 
-##  Repository Structure
+  Repository Structure
 
 ```
 .
@@ -320,7 +319,7 @@ Key real-world issues solved:
 
 ---
 
-##  Optimization Practices
+  Optimization Practices
 
  `.gitignore` used to exclude large assets (videos, PDFs)
  `.dockerignore` used to reduce build context size
@@ -329,27 +328,29 @@ Key real-world issues solved:
 
 ---
 
-##  Future Improvements
+  Future Improvements (portfolio phase 2)
 
  OWASP ZAP integration (DAST)
  Full SonarQube pipeline integration
  Migration to S3 + CDN for assets
  Infrastructure as Code (Terraform)
  Kubernetes-based orchestration
+ Ansible ( Configuration Management)
+ 
 
 ---
 
-## Documentation
+ Documentation
 
 Full detailed documentation (with commands, diagrams, and troubleshooting):
 
- See on directory ------>>>           `/opt/portfolio-staging/docs/files
+
 https://www.linkedin.com/posts/activity-7424926449561686018-tUq3?utm_source=share&utm_medium=member_desktop&rcm=ACoAACY74gkBUtwskDdA_IAvKNLeRaESUXIyFis
 https://www.linkedin.com/posts/activity-7412107817433812992-Q2Bd?utm_source=share&utm_medium=member_desktop&rcm=ACoAACY74gkBUtwskDdA_IAvKNLeRaESUXIyFis
 
 ---
 
-## ‍ Author
+ ‍ Author
 
 DevSecOps Engineer | Infrastructure & Automation Enthusiast
 
@@ -357,7 +358,7 @@ Focused on building secure, scalable, and production-ready systems aligned with 
 
 ---
 
-## Final Note
+ Final Note
 
 This project is not just a portfolio website—it is a complete DevSecOps ecosystem, demonstrating practical implementation of:
 
