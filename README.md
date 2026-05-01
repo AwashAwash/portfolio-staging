@@ -20,24 +20,24 @@
                          │  - SSL termination           │
                          └───────┬─────────┬────────────┘
                                  │         │
-                ┌────────────────┘         └────────────────┐
-                ▼                                           ▼
-  ┌──────────────────────────┐                     ┌──────────────────────────┐
-  │   Production Container   │                     │   Staging Container      │
-  │   (portfolio-app)        │                     │   (portfolio-staging)    │
-  │   Port: 8080             │                     │   Port: 8082             │
-  └──────────────────────────┘                     └──────────────────────────┘
+                    ┌───────────────┘      └───────────┐
+                    ▼                                  ▼
+  ┌──────────────────────────┐             ┌──────────────────────────┐
+  │   Production Container   │             │   Staging Container      │
+  │   (portfolio-app)        │             │   (portfolio-staging)    │
+  │   Port: 8080             │             │   Port: 8082             │
+  └──────────────────────────┘             └──────────────────────────┘
 
 
                 ┌─────────────────────────────────────────────┐
                 │                CI/CD PIPELINE               │
                 │                 (Jenkins)                   │
                 │                                             │
-                │  1. Clone GitHub Repo                      │
-                │  2. Build Docker Image                     │
-                │  3. Security Scan (Trivy)                  │
-                │  4. (Optional) SonarQube Analysis          │
-                │  5. Deploy Container                       │
+                │  1. Clone GitHub Repo                       │
+                │  2. Build Docker Image                      │
+                │  3. Security Scan (Trivy)                   │
+                │  4. (Optional) SonarQube Analysis           │
+                │  5. Deploy Container                        │
                 └─────────────────────────────────────────────┘
                                    │
                                    ▼
