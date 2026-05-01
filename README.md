@@ -347,6 +347,8 @@ Full detailed documentation (with commands, diagrams, and troubleshooting):
 
 https://www.linkedin.com/posts/activity-7424926449561686018-tUq3?utm_source=share&utm_medium=member_desktop&rcm=ACoAACY74gkBUtwskDdA_IAvKNLeRaESUXIyFis
 https://www.linkedin.com/posts/activity-7412107817433812992-Q2Bd?utm_source=share&utm_medium=member_desktop&rcm=ACoAACY74gkBUtwskDdA_IAvKNLeRaESUXIyFis
+youtube link - phase 1 ( shared ) phase 2 ( ubuntu ) phase 3 ( rocky linux )
+documenation - pdf for all the code integration for all bundled
 
 ---
 
