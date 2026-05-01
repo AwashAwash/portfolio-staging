@@ -343,8 +343,9 @@ Key real-world issues solved:
 
 Full detailed documentation (with commands, diagrams, and troubleshooting):
 
- See `/opt/portfolio-staging/docs/files
-` directory
+ See on directory ------>>>           `/opt/portfolio-staging/docs/files
+https://www.linkedin.com/posts/activity-7424926449561686018-tUq3?utm_source=share&utm_medium=member_desktop&rcm=ACoAACY74gkBUtwskDdA_IAvKNLeRaESUXIyFis
+https://www.linkedin.com/posts/activity-7412107817433812992-Q2Bd?utm_source=share&utm_medium=member_desktop&rcm=ACoAACY74gkBUtwskDdA_IAvKNLeRaESUXIyFis
 
 ---
 
