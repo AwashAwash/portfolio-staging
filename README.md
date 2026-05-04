@@ -25,22 +25,7 @@ Cloudflare protections
 <img width="1536" height="1024" alt="pipline fail" src="https://github.com/user-attachments/assets/d7ebad89-75e4-48d0-a2f4-5461d0eee58c" />
 
 
-```mermaid
-flowchart TD
-    A[End Users<br/>Browser / Internet Traffic] --> B[Cloudflare<br/>DNS<br/>HTTPS / SSL<br/>WAF / Proxy]
-    B --> C[Nginx<br/>Reverse Proxy on VPS<br/>Routing by domain<br/>SSL Termination]
 
-    C --> D[Staging Container<br/>portfolio-app<br/>Port 8080]
-    C --> E[Production Container<br/>portfolio-staging<br/>Port 8082]
-
-    D --> F[CI/CD Pipeline<br/>GitHub Repo<br/>Build Docker Image<br/>Security Scan (Trivy)<br/>Deploy]
-    E --> F
-
-    F --> G[Docker<br/>Image Build<br/>Container Runtime]
-
-    G --> H[Monitoring<br/>Prometheus<br/>Grafana]
-
-    G --> I[Security Layer<br/>Trivy<br/>Fail2Ban<br/>SSH Hardening<br/>Cloudflare WAF]
 
 
 
