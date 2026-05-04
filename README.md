@@ -313,6 +313,3 @@ This project is not just a portfolio website—it is a complete DevSecOps ecosys
 Infrastructure → CI/CD → Security → Monitoring
 
 in a real-world, production-style environment.
-
-
-
