@@ -37,7 +37,6 @@ Security integration
 Monitoring & observability
 
 **Architecture**
-
 High-level system flow:
 
 User
@@ -52,18 +51,6 @@ Docker Containers
  ├── Jenkins (CI/CD)
  └── Grafana (Monitoring)
 
-
-**Monitoring Flow**
-
-Node Exporter → Prometheus → Grafana
-
-**Security Flow**
-
-Code → Jenkins → Docker Build → Trivy Scan → Deploy
-
-
-**Tech Stack**
-
 **Infrastructure**
 Rocky Linux (RHEL-based) and Ubuntu 
 VPS (cloud-hosted)
@@ -71,7 +58,6 @@ Nginx (reverse proxy + SSL termination)
 Cloudflare (DNS, HTTPS, edge security)
 
 **Containerization**
-
 Docker (multi-container setup)
 
 **CI/CD**
@@ -79,19 +65,16 @@ Jenkins (pipeline automation)
 GitHub (source of truth)
 
 **Security (DevSecOps)**
-
 Trivy (container vulnerability scanning)
 SonarQube (on-demand code analysis)
 OWASP ZAP *(planned for DAST)*
 
 **Monitoring & Observability**
-
 Node Exporter
 Prometheus
 Grafana
 
-** Features**
-
+**Features**
 Multi-environment setup (**Production + Staging**)
 Fully containerized deployment
 Automated CI/CD pipeline (Jenkins)
@@ -100,7 +83,6 @@ Reverse proxy with HTTPS (Cloudflare + Nginx)
 Monitoring stack (Prometheus + Grafana)
 System hardening (firewall, SSH, Fail2Ban)
 Domain-based routing with subdomains
-
 
 
 **CI/CD Pipeline**
@@ -140,7 +122,7 @@ pipeline {
   }
 }
 
-**  Environments**
+**Environments**
 
 | Environment | Port | Purpose         |
 | ----------- | ---- | --------------- |
@@ -172,7 +154,7 @@ Grafana → dashboards & visualization
 
 Full detailed documentation (with commands, diagrams, and troubleshooting):
 
-
+Screenshot detail available on ScreenshotFolder 
 https://www.linkedin.com/posts/activity-7424926449561686018-tUq3?utm_source=share&utm_medium=member_desktop&rcm=ACoAACY74gkBUtwskDdA_IAvKNLeRaESUXIyFis
 https://www.linkedin.com/posts/activity-7412107817433812992-Q2Bd?utm_source=share&utm_medium=member_desktop&rcm=ACoAACY74gkBUtwskDdA_IAvKNLeRaESUXIyFis
 youtube link - phase 1 ( shared ) phase 2 ( ubuntu ) phase 3 ( rocky linux )
