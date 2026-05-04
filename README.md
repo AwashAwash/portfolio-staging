@@ -21,6 +21,35 @@ Cloudflare protections
 
 #  DevSecOps Portfolio Platform
 
+
+```mermaid
+flowchart TD
+    A[End Users<br/>Browser / Internet Traffic]
+    B[Cloudflare<br/>DNS / HTTPS / WAF]
+    C[Nginx<br/>Reverse Proxy]
+
+    A --> B --> C
+
+    C --> D[Staging Container<br/>portfolio-app<br/>Port 8080]
+    C --> E[Production Container<br/>portfolio-staging<br/>Port 8082]
+
+    D --> F[CI/CD Pipeline]
+    E --> F
+
+    F --> G[Docker]
+
+    G --> H[Monitoring<br/>Prometheus / Grafana]
+    G --> I[Security<br/>Trivy / Fail2Ban / SSH / WAF]
+```
+
+
+
+
+
+
+
+
+
 A production-grade, self-managed **DevSecOps platform** built from scratch on a VPS, designed to simulate real-world enterprise infrastructure, CI/CD workflows, security integration, and observability.
 
 
@@ -167,6 +196,8 @@ pipeline {
 | Staging     | **** | Testing changes |
 | Jenkins     | *** | CI/CD           |
 | Grafana     | **** | Monitoring      |
+
+
 
 
 
