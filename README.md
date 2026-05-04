@@ -1,8 +1,5 @@
 <img width="1536" height="1024" alt="pipline fail" src="https://github.com/user-attachments/assets/d7ebad89-75e4-48d0-a2f4-5461d0eee58c" />
 
-#  DevSecOps Portfolio Platform
-
-
 ```mermaid
 flowchart TD
     A[End Users<br/>Browser / Internet Traffic]
