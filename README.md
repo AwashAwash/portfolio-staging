@@ -1,6 +1,3 @@
-
-                      
-
 Architecture Overview
 Traffic is routed through Cloudflare, providing DNS, HTTPS, and security.
 Nginx acts as a reverse proxy, routing requests to:
@@ -20,14 +17,7 @@ Fail2Ban (intrusion prevention)
 SSH hardening
 Cloudflare protections
 
-
-
 <img width="1536" height="1024" alt="pipline fail" src="https://github.com/user-attachments/assets/d7ebad89-75e4-48d0-a2f4-5461d0eee58c" />
-
-
-
-
-
 
 #  DevSecOps Portfolio Platform
 
@@ -46,13 +36,13 @@ It reflects modern industry practices across:
  Security integration
  Monitoring & observability
 
----
+
 
  Architecture
 
 High-level system flow:
 
-```
+
 User
  ↓
 Cloudflare (DNS / SSL / Security)
@@ -64,60 +54,60 @@ Docker Containers
  ├── Portfolio (Staging)
  ├── Jenkins (CI/CD)
  └── Grafana (Monitoring)
-```
+
 
  Monitoring Flow
 
-```
+
 Node Exporter → Prometheus → Grafana
-```
+
 
   Security Flow
 
-```
+
 Code → Jenkins → Docker Build → Trivy Scan → Deploy
-```
+
  Architecture diagrams and screenshots available in:
 
-```
+
 /opt/portfolio-staging/docs/screenshots
 
 
----
+
 
   Tech Stack
 
  Infrastructure
 
-* Rocky Linux (RHEL-based)
-* VPS (cloud-hosted)
-* Nginx (reverse proxy + SSL termination)
-* Cloudflare (DNS, HTTPS, edge security)
+ Rocky Linux (RHEL-based)
+ VPS (cloud-hosted)
+ Nginx (reverse proxy + SSL termination)
+ Cloudflare (DNS, HTTPS, edge security)
 
   Containerization
 
-* Docker (multi-container setup)
+ Docker (multi-container setup)
 
  CI/CD
 
-* Jenkins (pipeline automation)
-* GitHub (source of truth)
+Jenkins (pipeline automation)
+GitHub (source of truth)
 
-  Security (DevSecOps)
+Security (DevSecOps)
 
-* Trivy (container vulnerability scanning)
-* SonarQube (on-demand code analysis)
-* OWASP ZAP *(planned for DAST)*
+ Trivy (container vulnerability scanning)
+SonarQube (on-demand code analysis)
+OWASP ZAP *(planned for DAST)*
 
   Monitoring & Observability
 
-* Node Exporter
-* Prometheus
-* Grafana
+Node Exporter
+ Prometheus
+ Grafana
 
----
 
-##  Features
+
+ Features
 
   Multi-environment setup (**Production + Staging**)
   Fully containerized deployment
@@ -128,7 +118,7 @@ Code → Jenkins → Docker Build → Trivy Scan → Deploy
   System hardening (firewall, SSH, Fail2Ban)
   Domain-based routing with subdomains
 
----
+
 
   CI/CD Pipeline
 
@@ -141,7 +131,7 @@ Pipeline flow:
 5. Old container removed
 6. New container deployed
 
-```groovy
+groovy
 pipeline {
   agent any
   stages {
@@ -178,7 +168,7 @@ pipeline {
 | Jenkins     | *** | CI/CD           |
 | Grafana     | **** | Monitoring      |
 
----
+
 
   Security Implementation
 
@@ -192,9 +182,8 @@ pipeline {
    Fail2Ban
    SSH security practices
 
----
 
-##  Monitoring Stack
+Monitoring Stack
 
 Node Exporter → system metric
 Prometheus → metrics collection
@@ -202,12 +191,6 @@ Grafana → dashboards & visualization
 
  Example dashboards:
 
-```
-/opt/portfolio-staging/docs/screenshots
-
-```
-
----
 
  Key DevSecOps Practices Applied
 
@@ -218,7 +201,7 @@ Grafana → dashboards & visualization
  Observability-first architecture
  Reverse proxy routing with domain segmentation
 
----
+
   Challenges & Lessons Learned
 
 Key real-world issues solved:
@@ -234,12 +217,10 @@ Key real-world issues solved:
 
 > Git is not optimized for large binary files. Videos and PDFs should be excluded using `.gitignore` or moved to external storage (e.g., S3/CDN).
 
----
 
   Repository Structure
 
-```
-.
+
 ├── assets/
 ├── Dockerfile
 ├── Jenkinsfile
@@ -249,9 +230,9 @@ Key real-world issues solved:
 └── docs/
     ├── architecture/
     └── screenshots/
-```
 
----
+
+
 
   Optimization Practices
 
@@ -260,7 +241,7 @@ Key real-world issues solved:
  Docker image size reduced significantly through cleanup
  External asset strategy (VPS → future S3/CDN)
 
----
+
 
   Future Improvements (portfolio phase 2)
 
@@ -272,7 +253,7 @@ Key real-world issues solved:
  Ansible ( Configuration Management)
  
 
----
+
 
  Documentation
 
@@ -284,7 +265,7 @@ https://www.linkedin.com/posts/activity-7412107817433812992-Q2Bd?utm_source=shar
 youtube link - phase 1 ( shared ) phase 2 ( ubuntu ) phase 3 ( rocky linux )
 documenation - pdf for all the code integration for all bundled
 
----
+
 
  ‍ Author
 
@@ -292,7 +273,7 @@ DevSecOps Engineer | Infrastructure & Automation Enthusiast
 
 Focused on building secure, scalable, and production-ready systems aligned with enterprise practices.
 
----
+
 
  Final Note
 
@@ -302,5 +283,5 @@ Infrastructure → CI/CD → Security → Monitoring
 
 in a real-world, production-style environment.
 
----
+
 
